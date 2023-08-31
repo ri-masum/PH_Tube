@@ -28,7 +28,7 @@ const displayProduct=(products=>{
     // lets try to get the id from the categories alada alada babe
 
 const handleProduct= async(categoryId)=>{
-    // console.log(categoryId);
+    console.log(categoryId);
 
     const res=await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
     const data=await res.json();
@@ -41,7 +41,7 @@ const handleProduct= async(categoryId)=>{
         const createProduct=document.createElement('div');
         createProduct.innerHTML=`
         
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card w-96 bg-base-100 shadow-xl ">
         <figure><img src="${product.thumbnail}" alt="product" /></figure>
         <div class="card-body">
           <div class="flex">
