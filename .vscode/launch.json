@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "https://openapi.programming-hero.com/api/videos/categories",
+            "request": "launch",
+            "url": "https://openapi.programming-hero.com/api/videos/categories"
+        }
+    ]
+}
