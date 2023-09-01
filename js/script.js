@@ -37,14 +37,16 @@ const handleProduct= async(categoryId)=>{
 
 
     console.log(data.data);
+
+    
     data.data.forEach((product)=>{
         const createProduct=document.createElement('div');
         createProduct.innerHTML=`
         
-        <div class="card w-96 bg-base-100 shadow-xl ">
+        <div class="card w-96 h-96 bg-base-100 shadow-xl ">
         <figure><img src="${product.thumbnail}" alt="product" /></figure>
         <div class="card-body">
-          <div class="flex">
+          <div class="flex gap-4">
 
           <div>
           <div class="avatar ">
@@ -64,7 +66,7 @@ const handleProduct= async(categoryId)=>{
           </div>
 
           <div>
-          <p>${product.authors[0].verified?product.authors[0].verified:"" }</p>
+          <p>${product.authors[0].verified?"<img src='./image/verified.png' class='w-5'>":"" }</p>
           </div>
           </div>
          <p>${product.others.views} views</p>
