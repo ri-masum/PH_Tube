@@ -69,22 +69,21 @@ const handleProduct = async (categoryId) => {
             
                 const miliSecond=product?.others?.posted_date;
             // console.log(miliSecond);
-            let seconds=Math.floor(miliSecond/1000)
+            let seconds=Math.floor((miliSecond/1000)%60)
             // console.log(seconds);
-            let minutes=Math.floor(seconds/60);
+            let minutes=Math.floor((miliSecond/(1000*60))%60);
             // console.log(minutes);
-            let hours=Math.floor(minutes/60);
-            // console.log(hours);
+            let hours=Math.floor((miliSecond/(1000*60*60)%24));
+            // console.log(hours+"hr"+minutes+"min");
 
-            seconds=seconds%60;
-
-            minutes=seconds>=30? minutes +1 : minutes;
-            minutes=minutes%60;
-            hours=hours%60;
+            hours=(hours<10)?+hours:hours;
+            minutes=(minutes<10)?"0"+minutes:minutes;
+            seconds=(seconds<10)?"0"+seconds:seconds;
 
             // banga cura babe korlam bt hoise muta muti 
-            const converted=`${hours}hrs ${minutes} min ago`
-            if(converted=='0hrs 0 min ago'){
+            const converted=`${hours}hrs ${minutes}min ago`
+            console.log(converted);
+            if(converted=='0hrs 00min ago'){
                 const createProduct = document.createElement("div");
 
                 createProduct.innerHTML = `
