@@ -9,7 +9,7 @@ const loadProduct = async () => {
 
 const displayProduct = (products) => {
   // console.log(products);
-
+ 
   const productContainer = document.getElementById("product-nav");
 
   products.forEach((product) => {
@@ -26,7 +26,7 @@ const displayProduct = (products) => {
 // lets try to get the id from the categories alada alada babe
 
 const handleProduct = async (categoryId) => {
-  console.log(categoryId);
+//   console.log(categoryId);
 
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
@@ -37,7 +37,10 @@ const handleProduct = async (categoryId) => {
   emptyCard.textContent = "";
   productCard.textContent = "";
 
-  console.log(data.data.length);
+
+
+
+//   console.log(data.data.length);
   if (data.data.length == 0) {
     // length jokon 0 hobe array er tokon ei section ta show korbe div a
 
@@ -60,6 +63,28 @@ const handleProduct = async (categoryId) => {
 
 
     data.data.forEach((product) => {
+
+      console.log(product.others.views);
+        // sorting by view
+  
+  // function productSortBtView(){
+  //   product.sort((a,b)=>
+  //   {
+  //     const card1=parseFloat(a.others.views.replace("K",""))*1000;
+  //     const card2=parseFloat(b.others.views.replace("K",""))*1000;
+  //     return card1 - card2
+  //   });
+  
+  //   handleProduct(product);
+  
+  // }
+  
+
+
+        // const views=product.others.views;
+        // console.log(views);
+
+
         // console.log(product.others.posted_date);
         // lets try to make the mili second into hour and minute
         if(product?.others?.posted_date==''){
@@ -82,7 +107,7 @@ const handleProduct = async (categoryId) => {
 
             // banga cura babe korlam bt hoise muta muti 
             const converted=`${hours}hrs ${minutes}min ago`
-            console.log(converted);
+            // console.log(converted);
             if(converted=='0hrs 00min ago'){
                 const createProduct = document.createElement("div");
 
@@ -190,5 +215,20 @@ const handleProduct = async (categoryId) => {
   }
 };
 
+// function for sorting 
+
+// function productSortBtView(){
+//   products.sort((a,b)=>
+//   {
+//     const card1=parseFloat(a.others.views.replace("K",""))*1000;
+//     const card2=parseFloat(b.others.views.replace("K",""))*1000;
+//     return card1 - card2
+//   });
+
+//   handleProduct(products);
+
+// }
+
+// document.getElementById('sortBtn').addEventListener("click",productSortBtView);
 loadProduct();
 handleProduct(1000);
